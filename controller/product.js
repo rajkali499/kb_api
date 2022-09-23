@@ -1,5 +1,6 @@
 const Product = require('../model/product');
 
+
 module.exports.getAllProducts = (req, res) => {
 	const limit = Number(req.query.limit) || 0;
 	const sort = req.query.sort == 'desc' ? -1 : 1;
@@ -52,7 +53,7 @@ module.exports.getProductsInCategory = (req, res) => {
 		.catch((err) => console.log(err));
 };
 
-module.exports.addProduct = (req, res) => {
+module.exports.addProduct = async (req, res) => {
 	if (typeof req.body == undefined) {
 		res.json({
 			status: 'error',
@@ -65,18 +66,20 @@ module.exports.addProduct = (req, res) => {
 		//     productCount = count;
 		//   })
 		//   .then(() => {
-		const product = {
-			id: 21,
-			title: req.body.title,
-			price: req.body.price,
-			description: req.body.description,
-			image: req.body.image,
-			category: req.body.category,
-		};
+		const productList = await Product.insertMany(req.body.products);
+		// const product = new Product({
+		// 	id: req.body.id,
+		// 	title: req.body.title,
+		// 	price: req.body.price,
+		// 	description: req.body.description,
+		// 	image: req.body.image,
+		// 	category: req.body.category,
+		// 	rating: req.body.rating
+		// });
 		// product.save()
 		//   .then(product => res.json(product))
 		//   .catch(err => console.log(err))
-		res.json(product);
+		res.json(productList);
 		// });
 	}
 };
