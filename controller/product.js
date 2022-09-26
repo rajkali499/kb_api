@@ -10,7 +10,7 @@ module.exports.getAllProducts = (req, res) => {
 		.limit(limit)
 		.sort({ id: sort })
 		.then((products) => {
-			res.json(products);
+			res.json({productList:products});
 		})
 		.catch((err) => console.log(err));
 };
@@ -23,7 +23,7 @@ module.exports.getProduct = (req, res) => {
 	})
 		.select(['-_id'])
 		.then((product) => {
-			res.json(product);
+			res.json({product:product});
 		})
 		.catch((err) => console.log(err));
 };
@@ -31,7 +31,7 @@ module.exports.getProduct = (req, res) => {
 module.exports.getProductCategories = (req, res) => {
 	Product.distinct('category')
 		.then((categories) => {
-			res.json(categories);
+			res.json({category:categories});
 		})
 		.catch((err) => console.log(err));
 };
@@ -48,7 +48,7 @@ module.exports.getProductsInCategory = (req, res) => {
 		.limit(limit)
 		.sort({ id: sort })
 		.then((products) => {
-			res.json(products);
+			res.json({products:products});
 		})
 		.catch((err) => console.log(err));
 };
@@ -114,7 +114,7 @@ module.exports.deleteProduct = (req, res) => {
 		})
 			.select(['-_id'])
 			.then((product) => {
-				res.json(product);
+				res.json({product:product});
 			})
 			.catch((err) => console.log(err));
 	}
