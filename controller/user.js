@@ -54,7 +54,7 @@ module.exports.addUser = (req, res) => {
 					address: {
 						city: req.body.address.city,
 						street: req.body.address.street,
-						doornumber: req.body.number,
+						doornumber: req.body.doornumber,
 						zipcode: req.body.zipcode,
 						geolocation: {
 							lat: req.body.address.geolocation.lat,
@@ -63,12 +63,12 @@ module.exports.addUser = (req, res) => {
 					},
 					phone: req.body.phone,
 				});
-				// user.save()
-				//   .then(user => res.json(user))
-				//   .catch(err => console.log(err))
+				user.save()
+				  .then(user => res.json(user))
+				  .catch(err => console.log(err))
 
-				res.json(user);
-			}).catch((e)=>console.log(e));
+				// res.json(user);
+			});
 
 		//res.json({id:User.find().count()+1,...req.body})
 	}
@@ -93,7 +93,7 @@ module.exports.editUser = (req, res) => {
 			address: {
 				city: req.body.address.city,
 				street: req.body.address.street,
-				doornumber: req.body.number,
+				doornumber: req.body.doornumber,
 				zipcode: req.body.zipcode,
 				geolocation: {
 					lat: req.body.address.geolocation.lat,
