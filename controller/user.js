@@ -87,8 +87,8 @@ module.exports.editUser = (req, res) => {
 			username: req.body.username,
 			password: req.body.password,
 			name: {
-				firstname: req.body.firstname,
-				lastname: req.body.lastname,
+				firstname: req.body.name.firstname,
+				lastname: req.body.name.lastname,
 			},
 			address: {
 				city: req.body.address.city,
