@@ -3,7 +3,7 @@ const schema = mongoose.Schema
 
 const userSchema = new schema({
     id:{
-        type:Number,
+        type:String,
         required:true
     },
     email:{
@@ -31,7 +31,7 @@ const userSchema = new schema({
     address:{
         city:String,
         street:String,
-        number:Number,
+        doornumber:Number,
         zipcode:String,
         geolocation:{
             lat:String,
