@@ -43,7 +43,7 @@ module.exports.addUser = (req, res) => {
 			})
 			.then(() => {
 				const user = new User({
-					id: userCount + 1,
+					id: req.body.id,
 					email: req.body.email,
 					username: req.body.username,
 					password: req.body.password,
@@ -54,7 +54,7 @@ module.exports.addUser = (req, res) => {
 					address: {
 						city: req.body.address.city,
 						street: req.body.address.street,
-						number: req.body.number,
+						doornumber: req.body.number,
 						zipcode: req.body.zipcode,
 						geolocation: {
 							lat: req.body.address.geolocation.lat,
@@ -68,7 +68,7 @@ module.exports.addUser = (req, res) => {
 				//   .catch(err => console.log(err))
 
 				res.json(user);
-			});
+			}).catch((e)=>console.log(e));
 
 		//res.json({id:User.find().count()+1,...req.body})
 	}
@@ -93,7 +93,7 @@ module.exports.editUser = (req, res) => {
 			address: {
 				city: req.body.address.city,
 				street: req.body.address.street,
-				number: req.body.number,
+				doornumber: req.body.number,
 				zipcode: req.body.zipcode,
 				geolocation: {
 					lat: req.body.address.geolocation.lat,
