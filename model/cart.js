@@ -32,4 +32,4 @@ const cartSchema = new schema({
    ]
 })
 
-module.exports =mongoose.model('cart',cartSchema)
+module.exports = mongoose.model('cart',cartSchema)

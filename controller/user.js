@@ -11,7 +11,7 @@ module.exports.getAllUser = (req, res) => {
 			id: sort,
 		})
 		.then((users) => {
-			res.json(users);
+			res.json({users:users});
 		})
 		.catch((err) => console.log(err));
 };
@@ -24,7 +24,7 @@ module.exports.getUser = (req, res) => {
 	})
 		.select(['-_id'])
 		.then((user) => {
-			res.json(user);
+			res.json({user:user});
 		})
 		.catch((err) => console.log(err));
 };
@@ -64,7 +64,7 @@ module.exports.addUser = (req, res) => {
 					phone: req.body.phone,
 				});
 				user.save()
-				  .then(user => res.json(user))
+				  .then(user => res.json({user:user}))
 				  .catch(err => console.log(err))
 
 				// res.json(user);
@@ -81,7 +81,7 @@ module.exports.editUser = (req, res) => {
 			message: 'something went wrong! check your sent data',
 		});
 	} else {
-		res.json({
+		res.json({user:{
 			id: parseInt(req.params.id),
 			email: req.body.email,
 			username: req.body.username,
@@ -101,7 +101,7 @@ module.exports.editUser = (req, res) => {
 				},
 			},
 			phone: req.body.phone,
-		});
+		}});
 	}
 };
 
@@ -115,7 +115,7 @@ module.exports.deleteUser = (req, res) => {
 		User.findOne({ id: req.params.id })
 			.select(['-_id'])
 			.then((user) => {
-				res.json(user);
+				res.json({user:user});
 			})
 			.catch((err) => console.log(err));
 	}
