@@ -42,18 +42,18 @@ module.exports.getUser = (req, res) => {
 				user1 = user;
 		
 		if (user1 != null) {
-			user1.id = req.body.id;
-			user1.email = req.body.email;
-			user1.username = req.body.username;
-			user1.password = req.body.password;
-			user1.name.firstname = req.body.firstname;
-			user1.address.city = req.body.address.city;
-			user1.address.street = req.body.address.street;
-			user1.address.doornumber = req.body.address.doornumber;
-			user1.address.zipcode = req.body.address.zipcode;
-			user1.address.geolocation.lat = req.body.address.geolocation.lat;
-			user1.address.geolocation.long = req.body.address.geolocation.long;
-			user1.phone = req.body.phone;
+			// user1.id = req.body.id;
+			// user1.email = req.body.email;
+			// user1.username = req.body.username;
+			// user1.password = req.body.password;
+			// user1.name.firstname = req.body.firstname;
+			// user1.address.city = req.body.address.city;
+			// user1.address.street = req.body.address.street;
+			// user1.address.doornumber = req.body.address.doornumber;
+			// user1.address.zipcode = req.body.address.zipcode;
+			// user1.address.geolocation.lat = req.body.address.geolocation.lat;
+			// user1.address.geolocation.long = req.body.address.geolocation.long;
+			// user1.phone = req.body.phone;
 			
 			user1.save()
 				.then(user => res.json({ user: user }))
