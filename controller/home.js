@@ -4,6 +4,6 @@ module.exports.indexPage = (req,res) => {
 }
 
 module.exports.docsPage = (req,res) => {
-    res.render('home/docs')
+    // res.render('home/docs')
     res.send("docsPage")
 }
