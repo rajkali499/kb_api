@@ -42,7 +42,7 @@ module.exports.getUser = (req, res) => {
 				user1 = user;
 		
 		if (user1 != null) {
-			user1.id = user1.id==req.body.id? user1.id : req.body.id;
+			user1.id = (user1.id==req.body.id && req.body.id!="")? user1.id : req.body.id;
 			user1.email = user1.email==req.body.email? user1.email : req.body.email;
 			user1.username = user1.username==req.body.username? user1.username : req.body.username;
 			user1.password = user1.password==req.body.password? user1.password : req.body.password;
