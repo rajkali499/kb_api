@@ -9,7 +9,7 @@ const cartSchema = new schema({
         required:true
     },
     userId:{
-        type:schema.Types.Number,
+        type:String,
         ref:User,
         required:true
     },
@@ -20,7 +20,7 @@ const cartSchema = new schema({
    products:[
         {
             productId:{
-                type:schema.Types.Number,
+                type:String,
                 ref:Product,
                 required:true
             },

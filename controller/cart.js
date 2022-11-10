@@ -15,7 +15,7 @@ module.exports.getAllCarts = (req, res) => {
 		.limit(limit)
 		.sort({ id: sort })
 		.then((carts) => {
-			res.json(carts);
+			res.json({carts:carts});
 		})
 		.catch((err) => console.log(err));
 };
@@ -32,7 +32,7 @@ module.exports.getCartsbyUserid = (req, res) => {
 	})
 		.select('-_id -products._id')
 		.then((carts) => {
-			res.json(carts);
+			res.json({carts:carts});
 		})
 		.catch((err) => console.log(err));
 };
@@ -60,17 +60,21 @@ module.exports.addCart = (req, res) => {
 		//   })
 
 		//     .then(() => {
-		const cart = {
-			id: 11,
-			userId: req.body.userId,
-			date: req.body.date,
-			products: req.body.products,
-		};
-		// cart.save()
-		//   .then(cart => res.json(cart))
-		//   .catch(err => console.log(err))
+		let cart= new Cart(
+			{
+				id: 11,
+				userId: req.body.userId,
+				date: new Date(),
+				products: req.body.products,
+			}
+		);	
+		cart.save()
+		  .then(cart => res.json({cart:cart}))
+		  .catch(err => console.log(err))
 
-		res.json(cart);
+
+
+		// res.json({cart:cart});
 		// })
 
 		//res.json({...req.body,id:Cart.find().count()+1})
@@ -103,7 +107,7 @@ module.exports.deleteCart = (req, res) => {
 		Cart.findOne({ id: req.params.id })
 			.select('-_id -products._id')
 			.then((cart) => {
-				res.json(cart);
+				res.json({carts:cart});
 			})
 			.catch((err) => console.log(err));
 	}
